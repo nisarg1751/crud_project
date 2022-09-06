@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Project</title>
+    <link rel="stylesheet" href="{% static '/enroll/css/bootstrap.css' %}">
+    <style>
+        .success{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center alert alert-danger">Function based CRUD opration</h2>
+        {% block content %} {% endblock content %}
+    </div>
+    
+
+
+
+    <script src="{% static '/enroll/js/jquery.js' %}"></script>
+    <!-- <script src="static/enroll/js/jquery.js"></script> -->
+    <!-- <script src="/sub/static/enroll/js/jquery.js"></script> -->
+    <!-- <script src="{% static '/enroll/js/popper.js' %}"></script> -->
+    <!-- <script src="{% static '/enroll/js/bootstrap.js' %}"></script> -->
+    <script>
+        $('#btnsave').click(function(){
+            console.log('button clicked!!')
+            let nm = $('#id_name').val()
+            let em = $('#id_email').val()
+            let pass = $('#id_password').val()
+            console.log(nm)
+            //let csr = $('')
+            my_data = {name:nm,email:em,password:pass}
+            $.ajax({
+                url:"{% url 'add' %}",
+                method:'POST',
+                data:my_data,
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        })
+        
+    </script>
+
+
+</body>
+
+</html>
