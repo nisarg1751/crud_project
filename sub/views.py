@@ -8,7 +8,7 @@ def add(request):
     stud = User.objects.all()
     if request.method == 'POST':
         fm = Reg(request.POST)
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',request.POST)
+        # print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',request.POST)
         if fm.is_valid():
             # fm.save()
             nm = fm.cleaned_data['name']
